@@ -1,0 +1,29 @@
+OASISFormat: 0.4
+Name:        exported-ocaml-js
+Version:     0.0.1
+Synopsis:    Example of ocaml library exported for JS
+Authors:     Roma Sokolov
+License:     MIT
+Plugins:     DevFiles (0.2)
+BuildTools:  ocamlbuild
+OCamlVersion: >= 4.02
+
+
+Executable example
+  Path:           src
+  MainIs:         core.ml
+  Install:        false
+  CompiledObject: byte
+  BuildTools:     ocamlbuild
+  BuildDepends:   result, js_of_ocaml, js_of_ocaml.ppx, lwt, containers, containers.data
+  ByteOpt+:       -g
+
+PostBuildCommand:
+  js_of_ocaml --noinline --sourcemap --opt=1 core.byte -o core.js
+  mv core.js resources/js/core.js
+  mv core.map resources/js/core.map
+  rm -f core.byte
+
+PostCleanCommand:
+  rm -f resources/js/core.js
+  rm -f resources/js/core.map

@@ -1,0 +1,12 @@
+_build
+.*.swp
+# Generated outputs
+*.native
+static*.ml
+static*.mli
+mir-*
+log
+.DS_Store
+resources/js/core.js
+setup.data
+setup.log

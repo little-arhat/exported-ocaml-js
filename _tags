@@ -1,0 +1,34 @@
+# OASIS_START
+# DO NOT EDIT (digest: 7134f0a27a5425592f25cfce2bd718c2)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Executable example
+"src/core.byte": oasis_executable_example_byte
+<src/*.ml{,i,y}>: oasis_executable_example_byte
+"src/core.byte": package(containers)
+"src/core.byte": package(containers.data)
+"src/core.byte": package(js_of_ocaml)
+"src/core.byte": package(js_of_ocaml.ppx)
+"src/core.byte": package(lwt)
+"src/core.byte": package(result)
+<src/*.ml{,i,y}>: package(containers)
+<src/*.ml{,i,y}>: package(containers.data)
+<src/*.ml{,i,y}>: package(js_of_ocaml)
+<src/*.ml{,i,y}>: package(js_of_ocaml.ppx)
+<src/*.ml{,i,y}>: package(lwt)
+<src/*.ml{,i,y}>: package(result)
+# OASIS_STOP
+"src/core.byte": package(ppx_jsobject_conv.runtime)
+<src/*.ml{,i,y}>: package(ppx_jsobject_conv)
